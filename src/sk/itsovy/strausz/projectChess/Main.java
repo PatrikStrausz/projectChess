@@ -6,9 +6,12 @@ public class Main {
 
         Board board = new Board();
 //        System.out.println(board.checkBishop("3A", "3a"));
-//        System.out.println(board.checkRook("A1","B1"));
+//        System.out.println(board.checkRook("B4","C4"));
 //        System.out.println(board.checkKnight("C3", "D5"));
 //        System.out.println(board.CheckQueen("A4", "e8"));
-        System.out.println(board.checkKing("A5", "c47"));
+//        System.out.println(board.checkKing("A5", "c4"));
+//        System.out.println(board.checkKnight("A5"));
+        board.checkKnightP("A2");
+//        System.out.println(board.convert("10"));
     }
 }

@@ -1,5 +1,6 @@
 package sk.itsovy.strausz.projectChess;
 
+import java.util.*;
 import java.util.regex.Pattern;
 
 public class Board {
@@ -173,7 +174,7 @@ public class Board {
 
     }
 
-    public boolean CheckQueen(String position, String destination){
+    public boolean checkQueen(String position, String destination){
 
         position =  normalizeString(position);
         destination =  normalizeString(destination);
@@ -260,6 +261,57 @@ public class Board {
 
 
 
+    public void checkKnightP(String position){
+        position =  normalizeString(position);
+
+
+        position = convertToArrayPosition(position);
+
+
+        if( position == null ){
+            return ;
+        }
+
+        int srcY = Integer.parseInt(position.substring(0, 1));
+        int srcX = Integer.parseInt(position.substring(1));
+
+Set<String> set = new HashSet<>();
+
+        System.out.println("src Y: " + srcY);
+        System.out.println("src  X: " + srcX);
+
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board.length; j++) {
+                int Yresult = Math.abs(i-srcY);
+                int Xresult = Math.abs(srcX-j);
+
+                if ((Yresult== 2) && (Xresult==1) ||(Yresult== 1) && (Xresult ==2 )) {
+                    board[i][j]="1";
+//                    System.out.print( board[i][j] + " ");
+//                    System.out.print(Arrays.asList(board).indexOf("1"));
+                    set.addAll(Collections.singleton(convert(board[i][j] +String.valueOf(Integer.parseInt(String.valueOf(i))+1))));
+
+
+                }else{
+//                    return ;
+                }
+//                System.out.print(board[i][j] + " ");
+
+            }
+            System.out.println();
+
+        }
+        System.out.print(set.toString());
+
+//        return ;
+
+
+    }
+
+
+
+
+
 
     public String normalizeString(String item) {
 
@@ -297,5 +349,27 @@ public class Board {
         System.out.println(temp + String.valueOf(secTemp));
 
         return temp + String.valueOf(secTemp);
+    }
+
+    public String convert(String pos){
+        if (pos == null) {
+            return null;
+        }
+
+        String first =  pos.substring(0,1);
+        String second = pos.substring(1);
+
+
+
+        int res = Integer.parseInt(first) +64;
+        int sec = Integer.parseInt(second) +1;
+        char c = (char) res;
+
+
+        System.out.println(String.valueOf(c) + sec);
+
+
+
+        return String.valueOf(c) + sec;
     }
 }
