@@ -11,7 +11,7 @@ public class Main {
 //        System.out.println(board.CheckQueen("A4", "e8"));
 //        System.out.println(board.checkKing("A5", "c4"));
 //        System.out.println(board.checkKnight("A5"));
-        board.checkKnightP("A2");
+        System.out.println(board.listOfPossibleKnightMoves("B3"));
 //        System.out.println(board.convert("10"));
     }
 }
